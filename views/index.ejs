@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CRUD sin BD</title>
+  </head>
+  <body>
+    <h1>Lista de elementos</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% datos.forEach(dato => { %>
+        <tr>
+          <td><%= dato.id %></td>
+          <td><%= dato.nombre %></td>
+          <td>
+            <a href="/editar/<%= dato.id %>">Editar</a>
+            <form
+              action="/eliminar/<%= dato.id %>"
+              method="post"
+              style="display: inline"
+            >
+              <button type="submit">Eliminar</button>
+            </form>
+          </td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+    <a href="/agregar">Agregar</a>
+  </body>
+</html>
